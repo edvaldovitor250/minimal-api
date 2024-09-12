@@ -40,13 +40,11 @@ namespace mininal_api.Dominio.Servicos
 {
     var query = _contexto.Moto.AsQueryable();
 
-    // Filtro por nome
     if (!string.IsNullOrEmpty(nome))
     {
         query = query.Where(v => EF.Functions.Like(v.nome, $"%{nome}%"));
     }
 
-    // Filtro por marca
     if (!string.IsNullOrEmpty(marca))
     {
         query = query.Where(v => EF.Functions.Like(v.marca, $"%{marca}%"));
@@ -57,7 +55,6 @@ namespace mininal_api.Dominio.Servicos
         query = query.Where(v => EF.Functions.Like(v.cor, $"%{cor}%"));
     }
 
-    // Filtro por ano
     if (ano != null)
     {
         query = query.Where(v => v.ano == ano);
